@@ -1,5 +1,5 @@
 xrun(64): 23.09-s006: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	23.09-s006: Started on Jun 14, 2025 at 15:47:04 PKT
+TOOL:	xrun(64)	23.09-s006: Started on Jun 14, 2025 at 16:53:46 PKT
 xrun
 	-f file.f
 		./transaction.sv
@@ -442,15 +442,15 @@ xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,14):
 DEFINE cds_amsfunctions ./CDS_AMSFUNCTIONS
 |
 xmvlog_cg: *W,DLCPTH (/home/cc/mnt/XCELIUM2309/tools/inca/files/cdsvhdl.lib,15): cds.lib Invalid path '/home/cc/mnt/XCELIUM2309/tools/inca/files/CDS_AMSFUNCTIONS' (cds.lib command ignored).
-		worklib.mem:sv <0x67c94d3a>
+		worklib.mem:sv <0x2b3f5d83>
 			streams:   3, words:  1336
-		worklib.mem_test:sv <0x097db8d7>
+		worklib.mem_test:sv <0x46dab027>
 			streams:   7, words: 19559
-		worklib.top:sv <0x2c27cb13>
+		worklib.top:sv <0x2df6d267>
 			streams:   3, words:   779
-		worklib.mem_intf:sv <0x655004c0>
+		worklib.mem_intf:sv <0x19d5874c>
 			streams:   2, words:  2841
-		worklib.\$unit_0x47735652 :compilation_unit <0x5a6b45f1>
+		worklib.\$unit_0x47735652 :compilation_unit <0x24b44e16>
 			streams:   9, words:  4342
 	Building instance specific data structures.
 xmelab: *W,CGPIDF: Covergroup "per_instance" option , by default, is set as 0.
@@ -686,7 +686,7 @@ Addr:	31	|	Data:	6e	|	ASCII:	n
 
 
 Simulation complete via $finish(1) at time 2236 NS + 0
-./mem_test.sv:60     $finish;
+./mem_test.sv:38     $finish;
 xcelium> ^C
 xcelium> exit
 xmsim: *N,COVCGN: Coverage configuration file command "set_covergroup -new_instance_reporting" can be specified to improve the scoping and naming of covergroup instances. It may be noted that subsequent merging of a coverage database saved with this command and a coverage database saved without this command is not allowed.
@@ -700,4 +700,4 @@ coverage setup:
 coverage files:
   model(design data) :  ./cov_work/scope/icc_00000000_7627703f.ucm (reused)
   data               :  ./cov_work/scope/test/icc_00000000_7627703f.ucd
-TOOL:	xrun(64)	23.09-s006: Exiting on Jun 14, 2025 at 15:47:29 PKT  (total: 00:00:25)
+TOOL:	xrun(64)	23.09-s006: Exiting on Jun 14, 2025 at 16:54:15 PKT  (total: 00:00:29)

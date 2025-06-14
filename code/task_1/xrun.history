@@ -9,3 +9,4 @@ s8(11Jun2025:11:21:18):  xrun -f file.f -access +rwc -gui -coverage U -covoverwr
 s9(11Jun2025:11:21:52):  xrun -f file.f -access +rwc -gui -coverage U -covoverwrite 
 s10(11Jun2025:12:44:48):  xrun -f file.f -access +rwc -gui -coverage U -covoverwrite 
 s11(14Jun2025:15:47:04):  xrun -f file.f -access +rwc -gui -coverage U -covoverwrite 
+s12(14Jun2025:16:53:46):  xrun -f file.f -access +rwc -gui -coverage U -covoverwrite 

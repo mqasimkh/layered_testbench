@@ -2,8 +2,8 @@
 // File created by:  xrun
 // Do not modify this file
 //
-/home/cc/muhammad_qasim/system_verilog/lab_40/code/task_1/transaction.sv
-/home/cc/muhammad_qasim/system_verilog/lab_40/code/task_1/top.sv
-/home/cc/muhammad_qasim/system_verilog/lab_40/code/task_1/mem.sv
-/home/cc/muhammad_qasim/system_verilog/lab_40/code/task_1/mem_test.sv
-/home/cc/muhammad_qasim/system_verilog/lab_40/code/task_1/mem_intf.sv
+/home/cc/muhammad_qasim/system_verilog/lab_40/layered_testbench/code/task_1/transaction.sv
+/home/cc/muhammad_qasim/system_verilog/lab_40/layered_testbench/code/task_1/top.sv
+/home/cc/muhammad_qasim/system_verilog/lab_40/layered_testbench/code/task_1/mem.sv
+/home/cc/muhammad_qasim/system_verilog/lab_40/layered_testbench/code/task_1/mem_test.sv
+/home/cc/muhammad_qasim/system_verilog/lab_40/layered_testbench/code/task_1/mem_intf.sv
