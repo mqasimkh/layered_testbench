@@ -47,7 +47,7 @@ task randomization();
   bit ok;
 
     transaction t;
-    t = new (1,3, weighted);
+    t = new (1,3);
 
     $display("*********************************************************");
     $display("Testing Randomization");
@@ -56,6 +56,9 @@ task randomization();
     for (int i = 0; i < 32; i++)
       begin
         ok = t.randomize();
+        t.controlled_c.constraint_mode(0);
+        t.read_write.constraint_mode(1);
+
 
         if (!ok)
         begin
@@ -71,10 +74,12 @@ task randomization();
       // memi.write_mem(addr, val);
       // memi.read_mem(addr, rdata);
 
-      $display("Addr:\t%0d\t|\tData:\t%h\t|\tASCII:\t%c\t", t.random_addr, t.random_value, t.random_value);
-      memi.write_mem(t.random_addr, t.random_value);
-      memi.read_mem(t.random_addr, rdata);
-      // cov.sample();
+      // $display("Addr:\t%0d\t|\tData:\t%h\t|\tASCII:\t%c\t", t.random_addr, t.random_value, t.random_value);
+      // memi.write_mem(t.random_addr, t.random_value);
+      // memi.read_mem(t.random_addr, rdata);
+
+      t.display();
+
       end
 
 endtask: randomization

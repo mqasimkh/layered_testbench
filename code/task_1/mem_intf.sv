@@ -1,7 +1,6 @@
-//testing connection
 interface mem_intf(input clk);
-    logic read; 
-    logic write; 
+    bit read; 
+    bit write; 
     logic [4:0] addr; 
     logic [7:0] data_in;
     logic [7:0] data_out;
