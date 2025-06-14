@@ -1,4 +1,4 @@
-
+//testing connection
 interface mem_intf(input clk);
     logic read; 
     logic write; 
