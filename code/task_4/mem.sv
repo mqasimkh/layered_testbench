@@ -1,18 +1,18 @@
 module mem(
-    mem_intf.mem xyz
+    mem_intf.mem bus
 );
 
     logic [7:0] memory [31:0];
 
-    always_ff @(posedge xyz.clk)
+    always_ff @(posedge bus.clk)
         begin
-            if (xyz.write == 1 && xyz.read == 0)
+            if (bus.write == 1 && bus.read == 0)
                 begin
-                    memory[xyz.addr] <= xyz.data_in;
+                    memory[bus.addr] <= bus.data_in;
                 end
-            else if (xyz.read == 1 && xyz.write == 0)
+            else if (bus.read == 1 && bus.write == 0)
                 begin
-                    xyz.data_out <= memory[xyz.addr];
+                    bus.data_out <= memory[bus.addr];
                 end
         end
 

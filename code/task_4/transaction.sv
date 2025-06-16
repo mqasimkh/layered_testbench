@@ -40,8 +40,8 @@ class transaction;
   endgroup: cg
 
     function new(bit [4:0] addr, logic [7:0] data_in, control c);
-        addr = addr;
-        data_in = data_in;
+        this.addr = addr;
+        this.data_in = data_in;
         ctrl = c;
         cg = new();
         read = 0;
