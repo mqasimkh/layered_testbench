@@ -37,7 +37,7 @@ class transaction;
       
   endgroup: cg
 
-    function new(bit [4:0] addr, bit [7:0] value, control c, bit read = 0, bit write = 0);
+    function new(bit [4:0] addr, bit [7:0] value, control c, read = 0; write = 1);
         random_addr = addr;
         random_value = value;
         ctrl = c;

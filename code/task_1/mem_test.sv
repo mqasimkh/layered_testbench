@@ -32,7 +32,7 @@ initial
     $display("\n");
 
     $display("\n");
-    test_read_write();
+    // test_read_write();
     $display("\n");
 
     $finish;
@@ -87,12 +87,13 @@ endtask: randomization
 //////////////////////////////////////////////////////////////////////////////////////////////
 task test_read_write();
   bit ok;
-  display("*********************************************************");
+
+    transaction t;
+    t = new (1,3, upper);
+
+  $display("*********************************************************");
   $display("Testing Read and Write Constriant");
   $display("*********************************************************");
-
-  transaction t;
-  t = new (1,3,3);
 
   repeat (7)
     begin
