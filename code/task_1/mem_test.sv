@@ -86,29 +86,29 @@ endtask: randomization
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 task test_read_write();
-    bit ok;
-    display("*********************************************************");
-    $display("Testing Read and Write Constriant");
-    $display("*********************************************************");
+  bit ok;
+  display("*********************************************************");
+  $display("Testing Read and Write Constriant");
+  $display("*********************************************************");
 
-    transaction t;
-    t = new (1,3,ASCII);
+  transaction t;
+  t = new (1,3,3);
 
-    repeat (7)
+  repeat (7)
     begin
-        ok = t.randomize();
-        if (!ok)
-          $display("Randomization Failed");
-        else
-          begin
-            if (t.read && t.write)
-              $display("Read/Write Constraint Failed. Read = 1 & Write = 1");
-            else if (!t.read && !t.write)
-              $display("Read/Write Constraint Failed. Read = 0 & Write = 0");
-            else
-              $display("Read and Write Constraint Passed. Read = %b | Write = %b", t.read, t.write);
-            end
-      end
+      ok = t.randomize();
+      if (!ok)
+        $display("Randomization Failed");
+      else
+        begin
+          if (t.read && t.write)
+            $display("Read/Write Constraint Failed. Read = 1 & Write = 1");
+          else if (!t.read && !t.write)
+            $display("Read/Write Constraint Failed. Read = 0 & Write = 0");
+          else
+            $display("Read and Write Constraint Passed. Read = %b | Write = %b", t.read, t.write);
+        end
+    end
 
 endtask:test_read_write
 
