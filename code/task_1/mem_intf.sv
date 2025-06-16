@@ -8,7 +8,9 @@ interface mem_intf(input clk);
     modport mem (input clk, data_in, addr, read, write, output data_out);
     modport mem_test (output read, write, addr, data_in, input data_out, clk, import write_mem, read_mem);
     
+    //////////////////////////////////////////////////////////////////////////////////////////////
     //task for writing to mem address
+    //////////////////////////////////////////////////////////////////////////////////////////////
     task write_mem (input logic [4:0] address, input logic [7:0] data);
         begin
             @(negedge clk)
@@ -24,7 +26,9 @@ interface mem_intf(input clk);
         end
     endtask
 
+    //////////////////////////////////////////////////////////////////////////////////////////////
     //reading from mem address
+    //////////////////////////////////////////////////////////////////////////////////////////////
     task read_mem (input logic [4:0] address, output logic [7:0] data);
         begin
             @(negedge clk)

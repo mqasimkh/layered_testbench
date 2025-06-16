@@ -2,21 +2,23 @@ typedef enum {ASCII, upper, lower, weighted} control;
 
 class transaction;
 
-    randc bit [4:0] random_addr;
-    rand bit [7:0] random_value;
+    randc logic [4:0] addr;
+    rand logic [7:0] data_in;
+    logic [7:0] data_out;
+
     control ctrl;
     rand bit read; 
     rand bit write;
 
     constraint controlled_c {
         if (ctrl == ASCII)
-            random_value inside {[8'h20:8'h7F]};
+            data_in inside {[8'h20:8'h7F]};
         else if (ctrl == upper)
-            random_value inside {[8'h41:8'h5A]};
+            data_in inside {[8'h41:8'h5A]};
         else if (ctrl == lower)
-            random_value inside {[8'h61:8'h7A]};
+            data_in inside {[8'h61:8'h7A]};
         else if (ctrl == weighted)
-            random_value dist { [8'h41:8'h5A] := 8, [8'h61:8'h7A] := 2 };
+            data_in dist { [8'h41:8'h5A] := 8, [8'h61:8'h7A] := 2 };
     }
 
     constraint read_write {
@@ -28,8 +30,8 @@ class transaction;
 
     covergroup cg;
     
-      cp_1: coverpoint random_addr;
-      cp_2: coverpoint random_value {
+      cp_1: coverpoint addr;
+      cp_2: coverpoint data_in {
         bins upper = {[8'h41:8'h5a]};
         bins lower = {[8'h61:8'h7a]};
         bins restof = default;
@@ -37,18 +39,18 @@ class transaction;
       
   endgroup: cg
 
-    function new(bit [4:0] addr, bit [7:0] value, control c, bit read = 0, bit write = 1);
-        random_addr = addr;
-        random_value = value;
+    function new(bit [4:0] addr, logic [7:0] data_in, control c);
+        addr = addr;
+        data_in = data_in;
         ctrl = c;
         cg = new();
-        this.read = read;
-        this.write = write;
+        read = 0;
+        write = 1;
 
     endfunction
 
     function void display();
-        $display("Addr:\t%0d\t|\tData:\t%h\t|\tASCII:\t%c\t|\tctrl:\t%d\t|\tread:\t%b\t|\twrite:\t%b\t", random_addr, random_value, random_value, ctrl, read, write);
+        $display("Address:\t%0d\t|\tData_In:\t%h\t|\tASCII:\t%c\t|\tctrl:\t%d\t|\tread:\t%b\t|\twrite:\t%b\t", addr, data_in, data_in, ctrl, read, write);
     endfunction:display
 
 endclass: transaction

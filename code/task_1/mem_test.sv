@@ -27,9 +27,9 @@ initial
     randomization();
     $display("\n");
 
-    $display("\n");
-    print_memory();
-    $display("\n");
+    // $display("\n");
+    // print_memory();
+    // $display("\n");
 
     $display("\n");
     test_read_write();
@@ -41,7 +41,7 @@ initial
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 task randomization();
-  logic [7:0] randomize_value;
+  logic [7:0] randomize_data_in;
   logic [4:0] addr;
   logic [7:0] val;
   bit ok;
@@ -49,16 +49,13 @@ task randomization();
     transaction t;
     t = new (1,3,3);
 
-    $display("*********************************************************");
+    $display("*****************************************************************************************************************************************************");
     $display("Testing Randomization");
-    $display("*********************************************************");
+    $display("*****************************************************************************************************************************************************");
 
     for (int i = 0; i < 32; i++)
       begin
         ok = t.randomize();
-        // t.controlled_c.constraint_mode(0);
-        // t.read_write.constraint_mode(0);
-
 
         if (!ok)
         begin
@@ -67,16 +64,16 @@ task randomization();
         end
 
         t.cg.sample();
-        addr = t.random_addr;
-        val = t.random_value;
+        addr = t.addr;
+        val = t.data_in;
 
       // $display("Addr:   %d   |   Data:   %h   |   ASCII:   %c   ", addr, val, val);
       // memi.write_mem(addr, val);
       // memi.read_mem(addr, rdata);
 
-      // $display("Addr:\t%0d\t|\tData:\t%h\t|\tASCII:\t%c\t", t.random_addr, t.random_value, t.random_value);
-      // memi.write_mem(t.random_addr, t.random_value);
-      // memi.read_mem(t.random_addr, rdata);
+      // $display("Addr:\t%0d\t|\tData:\t%h\t|\tASCII:\t%c\t", t.addr, t.data_in, t.data_in);
+      // memi.write_mem(t.addr, t.data_in);
+      // memi.read_mem(t.addr, rdata);
 
       t.display();
 
@@ -113,16 +110,16 @@ task test_read_write();
 
 endtask:test_read_write
 
-//////////////////////////////////////////////////////////////////////////////////////////////
-task print_memory();
-    $display("*********************************************************");
-    $display("Memory Read");
-    $display("*********************************************************");
-  for (int i = 0; i < 32; i++) begin
-    memi.read_mem(i, rdata);
-    $display("Addr:\t%0d\t|\tData:\t%h\t|\tASCII:\t%c\t", i, rdata, rdata);
-  end
-endtask
+// //////////////////////////////////////////////////////////////////////////////////////////////
+// task print_memory();
+//     $display("*********************************************************");
+//     $display("Memory Read");
+//     $display("*********************************************************");
+//   for (int i = 0; i < 32; i++) begin
+//     memi.read_mem(i, rdata);
+//     $display("Addr:\t%0d\t|\tData:\t%h\t|\tASCII:\t%c\t", i, rdata, rdata);
+//   end
+// endtask
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 task clear_memory_test();
