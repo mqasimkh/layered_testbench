@@ -8,12 +8,12 @@ class driver;
     function new(mailbox gen2drv, virtual mem_intf vif);
         this.gen2drv = gen2drv;
         this.vif = vif;
-
     endfunction
 
     task run();
     forever 
     begin
+        t = new(1,1,3);
         gen2drv.get(t);
         @(negedge vif.clk);
             if (t.write) begin
