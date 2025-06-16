@@ -5,3 +5,10 @@ code/task_1/xrun.key
 code/task_1/xrun.history
 code/task_1/cov_work
 code/task_1/xcelium.d
+code/task_2/*.log
+code/task_2/qaLog.txt
+code/task_2/.simvision
+code/task_2/xrun.key
+code/task_2/xrun.history
+code/task_2/cov_work
+code/task_2/xcelium.d
