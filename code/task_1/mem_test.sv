@@ -32,7 +32,7 @@ initial
     $display("\n");
 
     $display("\n");
-    // test_read_write();
+    test_read_write();
     $display("\n");
 
     $finish;
@@ -103,11 +103,11 @@ task test_read_write();
       else
         begin
           if (t.read && t.write)
-            $display("Read/Write Constraint Failed. Read = 1 & Write = 1");
+            $display("Read & Write Constraint Failed. Read = 1 & Write = 1");
           else if (!t.read && !t.write)
-            $display("Read/Write Constraint Failed. Read = 0 & Write = 0");
+            $display("Read & Write Constraint Failed. Read = 0 & Write = 0");
           else
-            $display("Read and Write Constraint Passed. Read = %b | Write = %b", t.read, t.write);
+            $display("Read & Write Constraint Passed. Read = %b | Write = %b", t.read, t.write);
         end
     end
 
