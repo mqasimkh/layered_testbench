@@ -4,7 +4,7 @@ class transaction;
 
     randc bit [4:0] random_addr;
     rand bit [7:0] random_value;
-    rand control ctrl;
+    control ctrl;
     rand bit read; 
     rand bit write;
 
@@ -37,10 +37,10 @@ class transaction;
       
   endgroup: cg
 
-    function new(bit [4:0] addr, bit [7:0] value, bit read = 0, bit write = 0);
+    function new(bit [4:0] addr, bit [7:0] value, control c, bit read = 0, bit write = 0);
         random_addr = addr;
         random_value = value;
-        //ctrl = c;
+        ctrl = c;
         cg = new();
         this.read = read;
         this.write = write;

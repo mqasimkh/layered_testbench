@@ -23,11 +23,9 @@ initial
     data_equal_address();
     $display("\n");
 
-    // cov.start();
     $display("\n");
     randomization();
     $display("\n");
-    // cov.stop();
 
     $display("\n");
     print_memory();
@@ -47,7 +45,7 @@ task randomization();
   bit ok;
 
     transaction t;
-    t = new (1,3);
+    t = new (1,3,3);
 
     $display("*********************************************************");
     $display("Testing Randomization");
@@ -56,8 +54,8 @@ task randomization();
     for (int i = 0; i < 32; i++)
       begin
         ok = t.randomize();
-        t.controlled_c.constraint_mode(0);
-        t.read_write.constraint_mode(1);
+        // t.controlled_c.constraint_mode(0);
+        // t.read_write.constraint_mode(0);
 
 
         if (!ok)
