@@ -16,26 +16,28 @@ class generator
 
     endfunction
 
-task run(int count);
-bit ok;
-    repeat (count)
-    begin
-        t = new (0,0,3);
-        t.randomize();
-        if (!ok)
-            begin
-                $display("Randomization Failed");
-                break;
-            end
-        else
-            t.cg.sample();
-            gen2drv.put(t);
-            gen2scr.put(t);
+    task run();
+    bit ok;
+        repeat (this.count)
+        begin
+            t = new (0,0,3);
+            ok = t.randomize();
+            if (!ok)
+                begin
+                    $display("Randomization Failed");
+                    break;
+                end
+            else
+                begin
+                    t.cg.sample();
+                    gen2drv.put(t);
+                    gen2scr.put(t);
+                end
+                
+        end
+        
+    -> complete;
 
-            -> complete;
-    
-    end
-
-endtask: run
+    endtask: run
 
 endclass: generator
