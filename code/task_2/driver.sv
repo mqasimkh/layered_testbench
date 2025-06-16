@@ -14,7 +14,6 @@ class driver;
     task run();
     forever 
     begin
-        t = new(1,1, 3);
         gen2drv.get(t);
         @(negedge vif.clk);
             if (t.write) begin

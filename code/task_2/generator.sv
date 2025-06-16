@@ -1,4 +1,4 @@
-class generator
+class generator;
     transaction t;
     mailbox gen2drv;
     mailbox gen2scr;
