@@ -11,9 +11,11 @@ class driver;
 
     endfunction
 
-    task new();
+    task run();
     forever 
     begin
+        t = new(1,1, 3);
+        gen2drv.get(t);
         @(negedge vif.clk);
             if (t.write) begin
                 vif.write <= 1;
@@ -32,6 +34,6 @@ class driver;
         drv_count++;
     end
 
-    endtask: new
+    endtask: run
 
 endclass: driver
