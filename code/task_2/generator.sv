@@ -6,13 +6,14 @@ class generator
 
     event complete;
 
-    function new (int count = 0, mailbox gen2drv, mailbox gen2scr);
+    function new (int count = 0, mailbox gen2drv, mailbox gen2scr, event complete);
         this.gen2drv = gen2drv;
         this.gen2scr = gen2scr;
         gen2drv = new();
         gen2scr = new();
         this.count = count;
         t = new (0,0,3);
+        this.complete = complete;
 
     endfunction
 
@@ -35,7 +36,7 @@ class generator
                 end
                 
         end
-        
+
     -> complete;
 
     endtask: run
