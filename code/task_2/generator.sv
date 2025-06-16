@@ -5,33 +5,37 @@ class generator
     int count;
 
     event complete;
-    bit ok;
 
     function new (int count = 0, mailbox gen2drv, mailbox gen2scr);
-        t = new (1,3,3);
         this.gen2drv = gen2drv;
         this.gen2scr = gen2scr;
         gen2drv = new();
         gen2scr = new();
         this.count = count;
+        t = new (0,0,3);
 
     endfunction
 
-    task run(int count);
-        repeat (count);
+task run(int count);
+bit ok;
+    repeat (count)
+    begin
+        t = new (0,0,3);
+        t.randomize();
+        if (!ok)
             begin
-                t.randomize();
-                if (!ok)
-                    $display("Randomization Failed");
-                else
-
+                $display("Randomization Failed");
+                break;
             end
-            -> complete;
-    endtask: run
+        else
+            t.cg.sample();
+            gen2drv.put(t);
+            gen2scr.put(t);
 
-    initial begin
-        always @(complete)
-        $display ("Generator work completed");
-    end;
+            -> complete;
+    
+    end
+
+endtask: run
 
 endclass: generator
