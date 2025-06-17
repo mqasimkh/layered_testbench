@@ -20,13 +20,22 @@ class driver;
                 vif.read <= 0;
                 vif.addr <= t.addr;
                 vif.data_in <= t.data_in;
-                $display("---Driver---\t*Write*\t\tAddr:\t%d\tData_in:\t%d\tDrv_Count:\t%d", t.addr, t.data_in, drv_count);
+                //$display("---Driver---\t*Write*\t\tAddr:\t%d\tData_in:\t%d\tDrv_Count:\t%d", t.addr, t.data_in, drv_count);
+                $display("*****************************************************************");
+                $display("Transaction # : %0d\tType: Write", drv_count+1);
+                $display("*****************************************************************");
+                $display("Addr: %0d",t.addr);
+                $display("Data_In: %0d",t.data_in);
             end
             else begin
                 vif.write <= 0;
                 vif.read <= 1;
                 vif.addr <= t.addr;
-                $display("---Driver---\t*Read*\t\tAddr:\t%d", t.addr);
+                //$display("---Driver---\t*Read*\t\tAddr:\t%d", t.addr);
+                $display("*****************************************************************");
+                $display("Transaction # : %0d\tType: Read", drv_count+1);
+                $display("*****************************************************************");
+                $display("Addr: %0d",t.addr);
             end
       
         drv_count++;

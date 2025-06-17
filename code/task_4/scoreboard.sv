@@ -24,7 +24,9 @@ class scoreboard;
 
         if (expected.write) begin
             golden_model[expected.addr] = expected.data_in;
-            $display("***Data Written to Array. Data Wrote: %d | Address = %d***", expected.data_in, expected.addr);
+            $display("");
+            $display("***Scoreboard***");
+            $display("Data Written to Array. Data Wrote: %d | Address = %d", expected.data_in, expected.addr);
         end
 
         else if (actual.read) 
@@ -39,7 +41,7 @@ class scoreboard;
         end
 
         count++;
-        $display("Scoreboard count: %d", count);
+        //$display("Scoreboard count: %d", count);
         $display("\n");
     
     end
