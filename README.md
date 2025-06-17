@@ -133,7 +133,7 @@ Inside the `initial` block, the environment is created and passed the interface 
 
 ## Test Result
 
-Ran the test by setting count to **771 transactions** on Cadence Xcellium. All transactions passed through the driver, DUT, and scoreboard with **no errors**. Screenshot
+Ran the test by setting count to **771 transactions** on Cadence Xcellium. All transactions passed through the driver, DUT, and scoreboard with **no errors**.
 
 ---
 
