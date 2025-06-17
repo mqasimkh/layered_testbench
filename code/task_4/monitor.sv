@@ -12,16 +12,19 @@ class monitor;
         forever
             begin
                 @(posedge vif.clk);
+                #1ns;
                 t = new();
-                if (vif.read)
-                    begin
+                // if (vif.read)
+                    // begin
+                        t.read=vif.read;
+                        t.write= vif.write;
+                        t.data_in = vif.data_in;
                         t.addr = vif.addr;
                         t.data_out = vif.data_out;
-                        // t.read = 1;
-                        // t.write = 0;
                         $display("---Monitor---\tAddr:\t%d\t|Data_out:\t%d\t", t.addr, t.data_out);
-                        mon2scr.put(t);
-                    end
+             
+                    // end
+                mon2scr.put(t);
          end
     endtask
 

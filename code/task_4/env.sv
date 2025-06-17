@@ -27,21 +27,20 @@ class env;
             drv.run();
             mon.run();
             sb.run();
-        join_any
+        join_none
     endtask
     
-
     task post_test();
-        wait(gen_done.triggered);
-        wait(count== drv.drv_count);
-        wait(count == sb.count);
+        @(gen_done);
+        wait(drv.drv_count >= count);
+        wait(sb.count >= count);
         $display("Scoreboard Count: %d | Scoreboard Errors: %d", sb.count, sb.errors);
-        $finish;
     endtask
 
     task run();
         test();
         post_test();
+        $finish;
     endtask
 
 endclass

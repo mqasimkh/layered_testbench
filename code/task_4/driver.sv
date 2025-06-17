@@ -28,6 +28,7 @@ class driver;
                 vif.addr <= t.addr;
                 $display("---Driver---\t*Read*\t\tAddr:\t%d", t.addr);
             end
+      
         drv_count++;
     end
     

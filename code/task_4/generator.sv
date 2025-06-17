@@ -3,9 +3,6 @@ class generator;
     mailbox gen2drv;
     mailbox gen2scr;
     int count;
-
-    int t_count;
-
     event complete;
 
     function new (int count = 0, mailbox gen2drv, mailbox gen2scr, event complete);
@@ -13,12 +10,14 @@ class generator;
         this.gen2scr = gen2scr;
         this.count = count;
         this.complete = complete;
-
+        gen2drv = new();
+        gen2scr = new();
+        //t = new();
     endfunction
 
     task run();
     bit ok;
-        repeat (this.count)
+        repeat (count)
         begin
             t = new ();
             ok = t.randomize();
@@ -27,20 +26,13 @@ class generator;
                     $display("Randomization Failed");
                     break;
                 end
-            else
-                begin
-                    t.cg.sample();
-                    gen2drv.put(t);
-                    gen2scr.put(t);
-                end
-            t_count++;
+                else
+                    begin
+                        t.cg.sample();
+                        gen2drv.put(t);
+                        gen2scr.put(t);
+                    end
         end
-        $display("\n");
-        $display("*************************************************");
-        $display("\tGenerator\t");
-        $display("*************************************************");
-        $display("Total Transactions Generated: %0d", t_count);
-        $display("\n");
         -> complete;
 
     endtask: run
