@@ -3,7 +3,7 @@ class driver;
     mailbox gen2drv;
     virtual mem_intf vif;
     
-    int drv_count = 1;
+    int drv_count = 0;
 
     function new(mailbox gen2drv, virtual mem_intf vif);
         this.gen2drv = gen2drv;

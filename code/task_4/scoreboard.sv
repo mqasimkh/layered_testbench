@@ -27,14 +27,15 @@ class scoreboard;
             $display("***Data Added to Model. Data Wrote: %d | Address = %d***", expected.data_in, expected.addr);
         end
 
-        else if (actual.read) begin
-        
-            if (golden_model[actual.addr] == actual.data_out)  $display("Test Passed");
-            else begin
-                    $display("Test Failed");
-                    errors++;
+        else if (actual.read) 
+        begin
+            if (golden_model[actual.addr] == actual.data_out)  
+                $display("Test Passed");
+            else
+            begin
+                $display("Test Failed");
+                errors++;
             end
-
         end
 
         count++;

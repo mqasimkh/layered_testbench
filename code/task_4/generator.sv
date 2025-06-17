@@ -4,6 +4,9 @@ class generator;
     mailbox gen2scr;
     int count;
     event complete;
+    int gen_count = 0;
+    int count_w;
+    int count_r;
 
     function new (int count = 0, mailbox gen2drv, mailbox gen2scr, event complete);
         this.gen2drv = gen2drv;
@@ -31,7 +34,12 @@ class generator;
                         t.cg.sample();
                         gen2drv.put(t);
                         gen2scr.put(t);
+                            if (t.write)
+                                count_w++;
+                            else
+                                count_r++;
                     end
+        gen_count++;
         end
         -> complete;
 

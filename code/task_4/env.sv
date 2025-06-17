@@ -34,7 +34,24 @@ class env;
         @(gen_done);
         wait(drv.drv_count >= count);
         wait(sb.count >= count);
-        $display("Scoreboard Count: %d | Scoreboard Errors: %d", sb.count, sb.errors);
+        $display("\n");
+
+        $display("***********************************************************************");
+        $display("\t\tTEST COMPLETED -- RESULTS\t\t");
+        $display("***********************************************************************");
+        $display("\n");
+
+        $display("***Generator Status***");
+        $display("Total Transactions Generated\t:\t%0d\t|\tRead Transactions:\t%d\t|Write Transactions:\t:%d\t", gen.gen_count, gen.count_r, gen.count_w);
+        $display("\n");
+
+        $display("***Driver Status***");
+        $display("Total Packets Sent\t:\t%0d", drv.drv_count);
+        $display("\n");
+
+        $display("***Scoreboard Status***");
+        $display("Scoreboard Count\t:\t%0d\t|\tScoreboard Errors\t:\t%0d", sb.count, sb.errors);
+        $display("\n");
     endtask
 
     task run();
