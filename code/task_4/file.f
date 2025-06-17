@@ -1,7 +1,9 @@
 ./transaction.sv
-./top.sv
-./mem.sv
-./mem_test.sv
 ./mem_intf.sv
 ./generator.sv
 ./driver.sv
+./monitor.sv
+./scoreboard.sv
+./mem.sv
+./env.sv
+./random_test.sv

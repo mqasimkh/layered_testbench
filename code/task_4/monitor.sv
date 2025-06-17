@@ -11,11 +11,11 @@ class monitor;
     task run();
         forever 
             begin
-                @(negedge vif.clk);
+                @(posedge vif.clk);
                 #1;
                 if (vif.read)
                     begin
-                        t = new(0,0,0);
+                        t = new();
                         t.addr <= vif.addr;
                         t.data_out <= vif.data_out;
                         t.read <= 1;

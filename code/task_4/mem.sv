@@ -1,5 +1,5 @@
 module mem(
-    mem_intf.mem bus
+    mem_intf bus
 );
 
     logic [7:0] memory [31:0];

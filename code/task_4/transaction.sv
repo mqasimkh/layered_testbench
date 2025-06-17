@@ -39,10 +39,9 @@ class transaction;
       
   endgroup: cg
 
-    function new(bit [4:0] addr, logic [7:0] data_in, control c);
-        this.addr = addr;
-        this.data_in = data_in;
-        ctrl = c;
+    function new();
+        addr = 1;
+        data_in = 3;
         cg = new();
         read = 0;
         write = 1;

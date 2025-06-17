@@ -15,12 +15,11 @@ class env;
         gen2drv = new();
         gen2scr = new();
         mon2scr = new();
-        gen = new(count, gen2drv, gen2scr);
+        gen = new(count, gen2drv, gen2scr, gen_done);
         drv = new (gen2drv, vif);
         mon = new (vif, mon2scr);
         sb = new(gen2scr, mon2scr);
     endfunction
-
 
     task test();
         fork
@@ -30,10 +29,12 @@ class env;
             sb.run();
         join_any
     endtask
+    
 
     task post_test();
-        @(gen.complete);
-        #10;
+        wait(gen_done.triggered);
+        wait(count== drv.drv_count);
+        wait(count == sb.count);
         $display("Scoreboard Count: %d | Scoreboard Errors: %d", sb.count, sb.errors);
         $finish;
     endtask

@@ -1,17 +1,14 @@
 module tb;
-    interface mem_intf bus();
+    bit clk;
+    initial clk = 0;
+    always #5 clk = ~clk;
+    mem_intf bus(clk);
     env env;
-    virtual mem_intf vif;
 
     mem dut(bus);
-    
-    initial bus.clk = 0;
-    always #5 bus.clk = ~bus.clk;
-
     initial 
         begin
-            vif = bus;
-            env = new(vif, 10);
+            env = new(bus, 10);
             env.run();
         end
 
