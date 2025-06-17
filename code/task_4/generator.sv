@@ -15,7 +15,6 @@ class generator;
         this.complete = complete;
         gen2drv = new();
         gen2scr = new();
-        //t = new();
     endfunction
 
     task run();

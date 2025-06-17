@@ -42,15 +42,15 @@ class env;
         $display("\n");
 
         $display("***Generator Status***");
-        $display("Total Transactions Generated\t:\t%0d\t|\tRead Transactions:\t%d\t|Write Transactions:\t:%d\t", gen.gen_count, gen.count_r, gen.count_w);
+        $display("Total Transactions Generated\t:  %0d\t|\tRead Transactions\t:  %0d\t|\tWrite Transactions\t:  %0d", gen.gen_count, gen.count_r, gen.count_w);
         $display("\n");
 
         $display("***Driver Status***");
-        $display("Total Packets Sent\t:\t%0d", drv.drv_count);
+        $display("Total Packets Sent\t:   %0d", drv.drv_count);
         $display("\n");
 
         $display("***Scoreboard Status***");
-        $display("Scoreboard Count\t:\t%0d\t|\tScoreboard Errors\t:\t%0d", sb.count, sb.errors);
+        $display("Scoreboard Count\t:   %0d\t|\tScoreboard Errors\t:   %0d", sb.count, sb.errors);
         $display("\n");
     endtask
 
