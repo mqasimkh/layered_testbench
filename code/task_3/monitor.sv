@@ -9,21 +9,22 @@ class monitor;
     endfunction
 
     task run();
-        forever 
+        forever
             begin
-                @(negedge vif.clk);
-                #1;
-                if (vif.read)
-                    begin
-                        t = new(0,0,0);
-                        t.addr <= vif.addr;
-                        t.data_out <= vif.data_out;
-                        t.read <= 1;
-                        t.write <= 0;
-                        $display("Read Transaction (Monitor):\tAddr:\t%d\t|Data_out:\t%d\t", t.addr, t.data_out);
-                        mon2scr.put(t);
-                    end
-         end
+                @(posedge vif.clk);
+                #1ns;
+                t = new();
+                t.read=vif.read;
+                t.write= vif.write;
+                t.data_in = vif.data_in;
+                t.addr = vif.addr;
+                t.data_out = vif.data_out;
+                mon2scr.put(t);
+                    if (vif.read)
+                        $display("");
+                        $display("***Monitor***");
+                        $display("Addr:\t%0d  |  Data_out:\t%0d\t", t.addr, t.data_out);
+            end
     endtask
 
 endclass

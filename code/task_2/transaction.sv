@@ -39,14 +39,13 @@ class transaction;
       
   endgroup: cg
 
-    function new(bit [4:0] addr, logic [7:0] data_in, control c);
-        addr = addr;
-        data_in = data_in;
-        ctrl = c;
+    function new();
+        addr = 0;
+        data_in = 3;
         cg = new();
         read = 0;
         write = 1;
-
+        data_out = 0;
     endfunction
 
     function void display();
