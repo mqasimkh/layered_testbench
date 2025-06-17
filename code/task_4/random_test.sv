@@ -8,7 +8,7 @@ module tb;
     mem dut(bus);
     initial 
         begin
-            env = new(bus, 10);
+            env = new(bus, 71);
             env.run();
         end
 

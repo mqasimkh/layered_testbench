@@ -3,6 +3,8 @@ class scoreboard;
     transaction expected;
     mailbox gen2scr;
     mailbox mon2scr;
+
+    logic [7:0] golden_model [logic [31:0]] =  
     
     int errors;
     int count;
@@ -12,21 +14,6 @@ class scoreboard;
         this.mon2scr = mon2scr;
     endfunction
 
-    task run();
-        forever 
-            begin
-                // expected = new ();
-                // actual = new();
-                gen2scr.get(expected);
-                mon2scr.get(actual);
-                    if (!(expected.data_out == actual.data_out))
-                        begin
-                            $display("Error (Scoreboard), expected addr: %d | Actual addr: %d | Expected Data_Out = %d | Actual Data_Out = %d | Expected Data_in: %d | Actual Data_in: %d", expected.addr, actual.addr, expected.data_out, actual.data_out, expected.data_in, actual.data_in);
-                        errors++;
-                        end
-                    else
-                        count++;
-            end
-    endtask
+
 
 endclass

@@ -3,7 +3,7 @@ class driver;
     mailbox gen2drv;
     virtual mem_intf vif;
     
-    int drv_count;
+    int drv_count = 1;
 
     function new(mailbox gen2drv, virtual mem_intf vif);
         this.gen2drv = gen2drv;
@@ -11,9 +11,8 @@ class driver;
     endfunction
 
     task run();
-    forever 
+    forever
     begin
-        t = new();
         gen2drv.get(t);
         @(negedge vif.clk);
             if (t.write) begin
@@ -21,13 +20,13 @@ class driver;
                 vif.read <= 0;
                 vif.addr <= t.addr;
                 vif.data_in <= t.data_in;
-                $display("Write Transaction from Driver:\tAddr:\t%d\t|Data_in:\t%d\t", t.addr, t.data_in);
+                $display("---Driver---\t*Write*\t\tAddr:\t%d\tData_in:\t%d\tDrv_Count:\t%d", t.addr, t.data_in, drv_count);
             end
             else begin
                 vif.write <= 0;
                 vif.read <= 1;
                 vif.addr <= t.addr;
-                $display("Read Transaction from Driver:\tAddr:\t%d", t.addr);
+                $display("---Driver---\t*Read*\t\tAddr:\t%d", t.addr);
             end
         drv_count++;
     end

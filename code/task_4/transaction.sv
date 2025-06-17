@@ -40,12 +40,12 @@ class transaction;
   endgroup: cg
 
     function new();
-        addr = 1;
+        addr = 0;
         data_in = 3;
         cg = new();
         read = 0;
         write = 1;
-
+        data_out = 0;
     endfunction
 
     function void display();

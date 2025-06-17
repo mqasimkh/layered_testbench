@@ -4,6 +4,8 @@ class generator;
     mailbox gen2scr;
     int count;
 
+    int t_count;
+
     event complete;
 
     function new (int count = 0, mailbox gen2drv, mailbox gen2scr, event complete);
@@ -31,9 +33,15 @@ class generator;
                     gen2drv.put(t);
                     gen2scr.put(t);
                 end
+            t_count++;
         end
-
-    -> complete;
+        $display("\n");
+        $display("*************************************************");
+        $display("\tGenerator\t");
+        $display("*************************************************");
+        $display("Total Transactions Generated: %0d", t_count);
+        $display("\n");
+        -> complete;
 
     endtask: run
 
