@@ -144,3 +144,11 @@ Ran the test by setting count to **771 transactions**.
 All transactions passed through the driver, DUT, and scoreboard with **no errors**.
 
 ---
+
+## Screenshots
+
+### ✅ Waveform or Simulation Log
+
+![Simulation Output 1](screenshots/1.jpeg)
+
+![Simulation Output 2](screenshots/2.jpeg)
