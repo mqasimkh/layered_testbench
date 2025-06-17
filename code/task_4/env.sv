@@ -50,7 +50,7 @@ class env;
         $display("\n");
 
         $display("***Scoreboard Status***");
-        $display("Scoreboard Count : %0d\t|\tScoreboard Errors\t: %0d\tScoreboard Passes\t: %0d", sb.count, sb.errors, sb.pass);
+        $display("Scoreboard Count : %0d\t|\tScoreboard Errors\t: %0d", sb.count, sb.errors);
         $display("\n");
     endtask
 
