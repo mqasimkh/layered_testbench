@@ -21,7 +21,9 @@ class monitor;
                 t.data_out = vif.data_out;
                 mon2scr.put(t);
                     if (vif.read)
-                        $display("---Monitor---\tAddr:\t%0d  |  Data_out:\t%0d\t", t.addr, t.data_out);
+                        $display("");
+                        $display("***Monitor***");
+                        $display("Addr:\t%0d  |  Data_out:\t%0d\t", t.addr, t.data_out);
             end
     endtask
 

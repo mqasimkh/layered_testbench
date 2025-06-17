@@ -37,12 +37,12 @@ class env;
         $display("\n");
 
         $display("*************************************************************************************************************");
-        $display("\t\tTEST COMPLETED -- RESULTS\t\t");
+        $display("\t\t -- TEST COMPLETED -- RESULTS\t\t");
         $display("*************************************************************************************************************");
         $display("\n");
 
         $display("***Generator Status***");
-        $display("Total Transactions Generated\t:  %0d\t|\tRead Transactions\t:  %0d\t|\tWrite Transactions\t:  %0d", gen.gen_count, gen.count_r, gen.count_w);
+        $display("Total Transactions Generated : %0d\t|\tRead Transactions : %0d\t|\tWrite Transactions : %0d", gen.gen_count, gen.count_r, gen.count_w);
         $display("\n");
 
         $display("***Driver Status***");
@@ -50,7 +50,7 @@ class env;
         $display("\n");
 
         $display("***Scoreboard Status***");
-        $display("Scoreboard Count\t:   %0d\t|\tScoreboard Errors\t:   %0d", sb.count, sb.errors);
+        $display("Scoreboard Count : %0d\t|\tScoreboard Errors\t: %0d\tScoreboard Passes\t: %0d", sb.count, sb.errors, sb.pass);
         $display("\n");
     endtask
 

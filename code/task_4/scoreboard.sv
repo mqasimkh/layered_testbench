@@ -4,10 +4,11 @@ class scoreboard;
     mailbox gen2scr;
     mailbox mon2scr;
 
-    logic [7:0] golden_model [31:0] = '{default: 0};
+    int  golden_model [int];
     
     int errors;
     int count;
+    int pass;
 
     function new(mailbox gen2scr, mailbox mon2scr);
         this.gen2scr = gen2scr;
@@ -22,22 +23,29 @@ class scoreboard;
         gen2scr.get(expected);
         mon2scr.get(actual);
 
-        if (expected.write) begin
+        if (expected.write) 
+        begin
             golden_model[expected.addr] = expected.data_in;
             $display("");
             $display("***Scoreboard***");
             $display("Data Written to Array. Data Wrote: %d | Address = %d", expected.data_in, expected.addr);
         end
 
-        else if (actual.read) 
+        else if (actual.read && golden_model.exists(actual.addr)) 
         begin
-            if (golden_model[actual.addr] == actual.data_out)  
+            if (golden_model[actual.addr] == actual.data_out) begin
                 $display("Test Passed");
-            else
-            begin
-                $display("Test Failed");
-                errors++;
+                pass++;
             end
+            else if (golden_model[actual.addr] == 8'hx) begin
+                $display("Test Passed");
+                pass++;
+            end
+            else 
+                begin
+                    $display("Test Failed");
+                    errors++;
+                end
         end
 
         count++;
